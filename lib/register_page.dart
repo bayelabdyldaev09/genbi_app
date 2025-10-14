@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:genbi_project/log_in_screen.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key});
@@ -31,17 +32,17 @@ class _RegisterPageState extends State<RegisterPage>
 
     _slideControllerLeft = AnimationController(
       vsync: this,
-      duration: const Duration(seconds: 2),
+      duration: const Duration(seconds: 1),
     );
-    Future.delayed(const Duration(seconds: 3), () {
+    Future.delayed(const Duration(seconds: 1), () {
       _slideControllerLeft.forward();
     });
 
     _slideControllerRight = AnimationController(
       vsync: this,
-      duration: const Duration(seconds: 2),
+      duration: const Duration(seconds: 1),
     );
-    Future.delayed(const Duration(seconds: 6), () {
+    Future.delayed(const Duration(seconds: 2), () {
       _slideControllerRight.forward();
     });
 
@@ -51,9 +52,9 @@ class _RegisterPageState extends State<RegisterPage>
     );
     _fadeAnimation = Tween<double>(
       begin: 0,
-      end: 1.5,
+      end: 3,
     ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeOut));
-    Future.delayed(const Duration(seconds: 9), () {
+    Future.delayed(const Duration(seconds: 3), () {
       _fadeAnimationController.forward();
     });
   }
@@ -108,7 +109,8 @@ class _RegisterPageState extends State<RegisterPage>
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(backgroundColor: Colors.white,
+    return Scaffold(
+      backgroundColor: Colors.white,
       body: Stack(
         children: [
           Image.asset(
@@ -230,6 +232,19 @@ class _RegisterPageState extends State<RegisterPage>
                         );
                       },
                       child: InkWell(
+                        onTap: () {
+                          Navigator.of(context).push(
+                            PageRouteBuilder(
+                              pageBuilder:
+                                  (context, animation, secondaryAnimation) =>
+                                      const LogInScreen(),
+                              transitionDuration:
+                                  Duration.zero,
+                              reverseTransitionDuration:
+                                  Duration.zero,
+                            ),
+                          );
+                        },
                         child: Container(
                           width: double.infinity,
                           height: 52,
@@ -243,7 +258,7 @@ class _RegisterPageState extends State<RegisterPage>
                             borderRadius: BorderRadius.circular(25),
                           ),
                           child: Text(
-                            'Next',
+                            'Дальше',
                             style: TextStyle(color: Colors.white),
                           ),
                         ),
