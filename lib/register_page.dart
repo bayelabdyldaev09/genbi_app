@@ -122,7 +122,7 @@ class _RegisterPageState extends State<RegisterPage>
           ),
 
           Padding(
-            padding: const EdgeInsets.all(36.0),
+            padding: const EdgeInsets.fromLTRB(36.0, 0, 36.0, 17.0),
             child: Column(
               children: [
                 Container(

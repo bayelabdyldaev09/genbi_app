@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:genbi_project/sign_in_screen.dart';
+import 'package:genbi_project/sign_up_screen.dart';
 
 class LogInScreen extends StatefulWidget {
   const LogInScreen({super.key});
@@ -41,7 +42,7 @@ class _LogInScreenState extends State<LogInScreen>
             color: Color.fromARGB(118, 0, 0, 0),
           ),
           Padding(
-            padding: const EdgeInsets.all(36.0),
+            padding: const EdgeInsets.fromLTRB(36.0, 0, 36.0, 17.0),
             child: Column(
               children: [
                 Container(
@@ -72,6 +73,16 @@ class _LogInScreenState extends State<LogInScreen>
                 ),
                 const SizedBox(height: 78),
                 InkWell(
+                  onTap: () {
+                    Navigator.of(context).push(
+                      PageRouteBuilder(
+                        pageBuilder: (context, animation, secondaryAnimation) =>
+                            const SignInScreen(),
+                        transitionDuration: Duration.zero,
+                        reverseTransitionDuration: Duration.zero,
+                      ),
+                    );
+                  },
                   child: Container(
                     width: double.infinity,
                     height: 52,
@@ -85,12 +96,22 @@ class _LogInScreenState extends State<LogInScreen>
                       borderRadius: BorderRadius.circular(25),
                     ),
                     child: Text(
-                      'Sign In',
+                      'Войти',
                       style: TextStyle(color: Colors.white),
                     ),
                   ),
                 ),
                 InkWell(
+                  onTap: () {
+                    Navigator.of(context).push(
+                      PageRouteBuilder(
+                        pageBuilder: (context, animation, secondaryAnimation) =>
+                            const SignUpScreen(),
+                        transitionDuration: Duration.zero,
+                        reverseTransitionDuration: Duration.zero,
+                      ),
+                    );
+                  },
                   child: Container(
                     width: double.infinity,
                     height: 52,
@@ -105,7 +126,7 @@ class _LogInScreenState extends State<LogInScreen>
                       borderRadius: BorderRadius.circular(25),
                     ),
                     child: Text(
-                      'Sign Up',
+                      'Зарегестрироваться',
                       style: TextStyle(color: Colors.white),
                     ),
                   ),
@@ -120,7 +141,7 @@ class _LogInScreenState extends State<LogInScreen>
                       ),
                     ),
                     const Text(
-                      "or",
+                      "или",
                       style: TextStyle(color: Colors.white, fontSize: 16),
                     ),
                     const Expanded(
@@ -147,13 +168,14 @@ class _LogInScreenState extends State<LogInScreen>
                       borderRadius: BorderRadius.circular(25),
                     ),
                     child: Text(
-                      'Continue with Google',
+                      'Продолжить с Google',
                       style: TextStyle(color: Colors.white),
                     ),
                   ),
                 ),
                 Expanded(child: Container(width: double.infinity)),
-                RichText(textAlign: TextAlign.center,
+                RichText(
+                  textAlign: TextAlign.center,
                   text: TextSpan(
                     text: 'Регистрируясь, вы принимаете условия\n',
                     style: TextStyle(color: Colors.white, fontSize: 12),
@@ -163,7 +185,7 @@ class _LogInScreenState extends State<LogInScreen>
                         style: TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight.w700,
-                          fontSize: 12
+                          fontSize: 12,
                         ),
                       ),
                     ],
